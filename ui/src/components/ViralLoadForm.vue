@@ -18,7 +18,7 @@
         <v-text-field prepend-icon="assignment_ind" v-model="practitionerId" label="Practitioner ID"
           required :rules="rules"></v-text-field>
         <v-select :rules="rules" prepend-icon="wc" :items="genders" item-text="text" item-value="value"
-          label="Gender" required></v-select>
+          v-model="gender" label="Gender" required></v-select>
         <v-menu v-model="birthDateMenu"
           :close-on-content-click="false"
           :nudge-right="40"

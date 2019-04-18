@@ -123,13 +123,18 @@ export default {
       this.obsDateOnly = new Date().toISOString().substring(0,10)
       this.obsTime = new Date().toISOString().substring(11,19)
     },
+    getInputs () {
+      let input = {}
+      for ( let i of this.inputs ) {
+        input[i] = this[i]
+      }
+      return input
+    },
     save () {
       if ( this.$refs.form.validate() ) {
 
-        let input = {}
-        for ( let i of this.inputs ) {
-          input[i] = this[i]
-        }
+        const input = this.getInputs()
+
         axios.post('/'+this.service, input).then( response => {
           if ( response.data.ok == "1" ) {
             this.results = "Patient Viral Load has been saved."

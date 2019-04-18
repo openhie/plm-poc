@@ -58,7 +58,11 @@ export default {
       { text: 'Viral Load /mL', value: 'viralLoad' },
       { text: 'Last Updated', value: 'updatedAt' }
     ],
-    items: [],
+    items: (process.env.NODE_ENV !== 'test' ? [] : [ {
+       service: 'TX_PVLS', locationId: 'aBcD', patientId: '123',
+       practitionerId: '456', gender: 'female', dateOfBirth: '2000-01-01',
+       obsDate: '2019-04-04 10:00:00', viralLoad: 500, updatedAt: '2019-04-04 10:00:00'
+     } ] ),
     downloadLink: false,
     showDate: false
   }),

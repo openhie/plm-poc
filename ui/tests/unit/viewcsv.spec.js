@@ -4,6 +4,8 @@ import Vuetify from 'vuetify'
 import Vue from 'vue'
 
 describe( 'ViewCSV.vue', () => {
+  // There should be a better way to handle this with a localVue, but that caused
+  // errors with the v-data-table so this seems to be the only way for now.
   Vue.use(Vuetify)
 
   const wrapper = mount(ViewCSV,{

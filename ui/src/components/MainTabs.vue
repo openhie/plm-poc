@@ -10,6 +10,10 @@
         View Data
         <v-icon>list</v-icon>
       </v-tab>
+      <v-tab href="#convert">
+        Convert CSV
+        <v-icon>transform</v-icon>
+      </v-tab>
 
       <v-tab-item key="form" value="form">
         <ViralLoadForm />
@@ -18,6 +22,11 @@
       <v-tab-item key="csv" value="csv">
         <ViewCSV />
       </v-tab-item>
+
+      <v-tab-item key="convert" value="convert">
+        <ConvertCSV />
+      </v-tab-item>
+
     </v-tabs>
   </v-container>
 </template>
@@ -25,12 +34,14 @@
 <script>
 import ViralLoadForm from './ViralLoadForm'
 import ViewCSV from './ViewCSV'
+import ConvertCSV from './ConvertCSV'
 
 export default {
   name: 'MainTabs',
   components: {
     ViralLoadForm,
-    ViewCSV
+    ViewCSV,
+    ConvertCSV
   },
   data () {
     return {

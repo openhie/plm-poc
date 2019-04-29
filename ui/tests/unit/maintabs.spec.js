@@ -21,8 +21,8 @@ describe( 'MainTabs.vue', () => {
       stubs: [ 'v-tabs', 'v-icon', 'v-tabs-slider', 'v-tab-item', 'v-tab', 'v-container' ]
     })
     expect(wrapper.isVueInstance()).toBeTruthy()
-    expect(wrapper.findAll('v-tab-stub')).toHaveLength(2)
-    expect(wrapper.findAll('v-tab-item-stub')).toHaveLength(2)
+    expect(wrapper.findAll('v-tab-stub')).toHaveLength(3)
+    expect(wrapper.findAll('v-tab-item-stub')).toHaveLength(3)
     expect(wrapper.findAll('viralloadform-stub')).toHaveLength(1)
     expect(wrapper.findAll('viewcsv-stub')).toHaveLength(1)
   })

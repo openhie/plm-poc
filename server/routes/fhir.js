@@ -168,8 +168,8 @@ router.post('/Bundle.json', (req, res, next) => {
         observation.valueQuantity.value = row.viralLoad
         bundle.entry.push( { resource: observation } )
 
-        res.status(200).json(bundle)
       }
+      res.status(200).json(bundle)
     }
   })
 })

@@ -106,11 +106,9 @@ const observationTemplate = {
   encounter: "",
   subject: "",
   performer: {
-    reference: {
-      identifier: {
-        system : "HR Reg",
-        code: ""
-      }
+    identifier: {
+      system : "HR Reg",
+      code: ""
     }
   },
   effectiveDateTime: "2019-04-10T10:00:00",
@@ -143,27 +141,27 @@ router.post('/Bundle.json', (req, res, next) => {
 
         let encounter = JSON.parse( JSON.stringify( encounterTemplate ) )
         encounter.id = row.patientId+"."+row.locationId+"."+row.obsDate
-        encounter.subject = "Patient/"+row.patientId
+        encounter.subject = { reference: "Patient/"+row.patientId }
         encounter.location[0].location.identifier.value = row.locationId
         bundle.entry.push( { resource: encounter } )
 
         let condition = JSON.parse( JSON.stringify( conditionTemplate ) )
         condition.id = row.patientId +".HIV"
-        condition.subject = "Patient/"+row.patientId
+        condition.subject = { reference: "Patient/"+row.patientId }
         condition.recordedDate = row.obsDateOnly
         bundle.entry.push( { resource: condition } )
 
         let medication = JSON.parse( JSON.stringify( medicationTemplate ) )
         medication.id = row.patientId +".ART"
-        medication.subject = "Patient/"+row.patientId
+        medication.subject = { reference: "Patient/"+row.patientId }
         medication.effectiveDateTime = row.obsDate
         bundle.entry.push( { resource: medication } )
 
         let observation = JSON.parse( JSON.stringify( observationTemplate ) )
         observation.id = row.patientId +".TX_PVLS."+ row.obsDate
-        observation.encounter = "Encounter/" + encounter.id
-        observation.subject = "Patient/"+row.patientId
-        observation.performer.reference.identifier.code = row.practitionerId
+        observation.encounter = { reference: "Encounter/" + encounter.id }
+        observation.subject = { reference: "Patient/"+row.patientId }
+        observation.performer.identifier.code = row.practitionerId
         observation.effectiveDateTime = row.obsDate
         observation.valueQuantity.value = row.viralLoad
         bundle.entry.push( { resource: observation } )
